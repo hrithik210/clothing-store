@@ -9,9 +9,9 @@ export default function Home() {
   return (
     <div>
       <Hero />
+      <MainCard />
       <Featured />
       <Collection />
-      <MainCard />
       <Footer />
     </div>
   );
