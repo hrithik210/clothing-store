@@ -6,13 +6,13 @@ import { Product } from "@/models";
 export async function GET({ params }: { params: { id: Number } }) {
     try {
         await connectDB();
-        const product = await Product.findById(params.id);
+        const products = await Product.find()
         
-        if (!product) {
+        if (!products) {
             return NextResponse.json({ error: "Product not found" }, { status: 404 });
         }
 
-        return NextResponse.json(product);
+        return NextResponse.json(products);
     } catch (error) {
         return NextResponse.json({ error: "Failed to fetch product" }, { status: 500 });
     }
