@@ -10,6 +10,7 @@ const ProductSchema = new mongoose.Schema({
     price: { type: Number, required: true },
     image: { type: String, required: true },
     category: { type: String, required: true },
+    isMainCard: { type: Boolean, default: false }
 }, { timestamps: true });
 
 ProductSchema.plugin(AutoIncrement, { inc_field: "id" });

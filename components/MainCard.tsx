@@ -1,6 +1,7 @@
 "use client"
+import { Product } from  '@/types/index'
 
-export default function MainCard(){
+export default function MainCard({name, description,image}: Product) {
     return(
     <div>
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
@@ -9,13 +10,13 @@ export default function MainCard(){
               <img
                 alt="Naruto Hokage Cloak"
                 className="mx-auto aspect-square overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
-                src="https://w0.peakpx.com/wallpaper/917/983/HD-wallpaper-naruto-hokage-hokage-naruto.jpg"
+                src={image}
               />
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
-                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Naruto Hokage Cloak</h2>
+                  <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">{name}</h2>
                   <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Embrace your ninja way with this iconic Hokage cloak. Made from high-quality materials, this cloak is perfect for cosplay or everyday wear for the ultimate Naruto fan.
+                    {description}
                   </p>
                 </div>
                 <div className="flex space-x-4">

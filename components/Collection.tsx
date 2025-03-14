@@ -1,8 +1,15 @@
 "use client"
 
-import { products } from "@/data/HardCoded"
+import { Product } from  '@/types/index'
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-export default function Collection(){
+export default function Collection() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+    useEffect(() => {
+        axios.get("/api/products").then((res) => setProducts(res.data));
+    }, []);
     return (
     <div>
       <section className="w-full py-12 md:py-24 lg:py-32">
