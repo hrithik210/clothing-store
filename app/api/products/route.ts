@@ -3,7 +3,7 @@ import connectDB from "@/lib/mongodb";
 
 import { Product } from "@/models";
 
-export async function GET({ params }: { params: { id: Number } }) {
+export async function GET() {
     try {
         await connectDB();
         const products = await Product.find()
