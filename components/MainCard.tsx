@@ -8,7 +8,7 @@ export default function MainCard({name, description,image}: Product) {
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <img
-                alt="Naruto Hokage Cloak"
+                alt={name}
                 className="mx-auto aspect-square overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
                 src={image}
               />
