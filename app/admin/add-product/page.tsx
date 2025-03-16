@@ -9,6 +9,7 @@ export default function AddProduct() {
     description: "",
     image: "",
     category: "",
+    isMainCard: false,
   });
   
   const [status, setStatus] = useState({
@@ -20,6 +21,11 @@ export default function AddProduct() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: name === "price" ? Number(value) : value }));
+  };
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    setFormData(prev => ({ ...prev, [name]: checked }));
   };
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -96,6 +102,7 @@ export default function AddProduct() {
         description: "",
         image: "",
         category: "",
+        isMainCard: false,
       });
       
       // Clear file input
@@ -218,6 +225,23 @@ export default function AddProduct() {
               />
             </div>
           )}
+        </div>
+        
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            id="isMainCard"
+            name="isMainCard"
+            checked={formData.isMainCard}
+            onChange={handleCheckboxChange}
+            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+          />
+          <label htmlFor="isMainCard" className="ml-2 block text-sm text-gray-700">
+            Set as Main Card
+          </label>
+          <div className="ml-2 text-xs text-gray-500">
+            (Only one product can be set as Main Card)
+          </div>
         </div>
         
         <button

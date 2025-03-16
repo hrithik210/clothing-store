@@ -5,13 +5,14 @@ import { Edit, MoreVertical } from 'lucide-react'
 import { useState } from 'react'
 
 interface AdminMainCardProps {
-    setname: (name: string) => void
-    setdescription: (description: string) => void
-    setimage: (image: string) => void
+  id: string;
+  name: string;
+  description: string;
+  image: string;
 }
-
-export default function AdminMainCard({setname, setdescription, setimage}:AdminMainCardProps ) {
+export default function AdminMainCard({id , name , description , image} : AdminMainCardProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -22,7 +23,8 @@ export default function AdminMainCard({setname, setdescription, setimage}:AdminM
     await axios.put("/api/products", {
       name: name,
       description: description,
-      image: image
+      image: image,
+      isMainCard: true
     })
   }
 

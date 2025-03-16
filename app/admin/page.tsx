@@ -9,28 +9,36 @@ import Collection from "@/components/Collection";
 import AdminMainCard from "@/components/MainCardAdmin";
 
 interface mainCardType{
+    id: string;
     name: string;
     description: string;
     image: string;
 }
 
 export default function AdminDashboard() {
-    const [products, setProducts] = useState<Product[]>([]);
-    const [mainCard, setMainCard] = useState<mainCardType>({
-        name: "",
-        description: "",
-        image: ""
-    });
+  const [mainCard, setMainCard] = useState<mainCardType | null>(null);
 
-    useEffect(() => {
-        axios.get("/api/products").then((res) => setProducts(res.data));
-        axios.get("/api/maincard").then((res) => setMainCard(res.data));
-    }, []);
+  useEffect(() => {
+    try {
+      axios.get("/api/maincard").then((res) => setMainCard(res.data));
+    }
+    catch (error) {
+      console.log('error fetching main card',error);
+    }
+  }, []);
+
+  if (!mainCard) return <p>Loading...</p>;
 
 
  return (
      <div>
-        <AdminMainCard image={mainCard.image} description={mainCard.description} name={mainCard.name} />
+        <AdminMainCard
+            id={mainCard.id}
+            name={mainCard.name}
+            description={mainCard.description}
+            image={mainCard.image}
+
+        />
         <Featured />
         <Collection />
      </div>
