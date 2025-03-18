@@ -1,7 +1,7 @@
 "use client"
 import { Product } from  '@/types/index'
 
-export default function MainCard({name, description,image}: Product) {
+export default function MainCard({id, name, description,image}: Product) {
     return(
     <div>
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
