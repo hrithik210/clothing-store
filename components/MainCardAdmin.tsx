@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Edit, MoreVertical, X } from 'lucide-react'
 
 interface AdminMainCardProps {
-  id: Number;
+  id: string;
   name: string;
   description: string;
   image: string;
@@ -136,7 +136,7 @@ export default function AdminMainCard({id, name, description, image, price = 0, 
     if (confirm("Are you sure you want to delete this product?")) {
       try {
         await axios.delete("/api/products", {
-          data: { id: id }
+          data: { _id: id }
         })
         alert("Product deleted successfully")
         // Reload page to refresh data
