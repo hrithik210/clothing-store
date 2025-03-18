@@ -9,7 +9,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 interface mainCardType{
-  id: string;
+  id: Number;
   name: string;
   description: string;
   image: string;

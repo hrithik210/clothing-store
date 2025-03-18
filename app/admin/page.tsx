@@ -9,7 +9,7 @@ import Collection from "@/components/Collection";
 import AdminMainCard from "@/components/MainCardAdmin";
 
 interface mainCardType{
-    id: string;
+    _id: string;
     name: string;
     description: string;
     image: string;
@@ -21,6 +21,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     try {
       axios.get("/api/maincard").then((res) => setMainCard(res.data));
+      console.log("maincard",mainCard);
     }
     catch (error) {
       console.log('error fetching main card',error);
@@ -28,12 +29,13 @@ export default function AdminDashboard() {
   }, []);
 
   if (!mainCard) return <p>Loading...</p>;
+  console.log("maincard",mainCard);
 
 
  return (
      <div>
         <AdminMainCard
-            id={mainCard.id}
+            id={mainCard._id}
             name={mainCard.name}
             description={mainCard.description}
             image={mainCard.image}
