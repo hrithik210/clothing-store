@@ -31,7 +31,7 @@ export default function Collection() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {products.map((product) => (
               <div 
-                key={product.id} 
+                key={product._id} 
                 className="flex flex-col group relative overflow-hidden rounded-lg shadow-lg cursor-pointer transition-transform hover:scale-105"
                 onClick={() => handleProductClick(product._id)}
               >
