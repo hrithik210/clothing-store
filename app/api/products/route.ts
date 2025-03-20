@@ -1,17 +1,17 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongodb";
 import { Product } from "@/models";
+import { console } from "inspector";
 
 export async function GET() {
   try {
     await connectDB();
+    
     const products = await Product.find();
-    if (!products) {
-      return NextResponse.json({ error: "Product not found" }, { status: 404 });
-    }
     return NextResponse.json(products);
   } catch (error) {
-    return NextResponse.json({ error: "Failed to fetch product" }, { status: 500 });
+    console.log(error);
+    return NextResponse.json({ error: "Failed to fetch products" }, { status: 500 });
   }
 }
 
